@@ -4,6 +4,7 @@ class ProductList{
         this.goods = [];
         this._fetchProducts();//рекомендация, чтобы метод был вызван в текущем классе
         this.render();//вывод товаров на страницу
+        this.getSumProducts();
     }
     _fetchProducts(){
         this.goods = [
@@ -12,6 +13,15 @@ class ProductList{
             {id: 3, title: 'Keyboard', price: 200},
             {id: 4, title: 'Gamepad', price: 50},
         ];
+    }
+
+    /**
+     * метод обходит все товары и суммирует значение в свойстве price
+     * @returns число.
+     */
+    getSumProducts() {
+        let totalSum = this.goods.reduce((acc, item) => acc + item.price, 0);
+        alert(`Сумма всех товаров: ${totalSum}`);
     }
     
     render(){
@@ -41,9 +51,65 @@ class ProductItem{
     }
 }
 
+class Basket{
+    constructor(id, product, price, count){
+        this.id = id;
+        this.product = product;
+        this.price = price;
+        this.count = count;
+    }
+
+    /**
+     * Добавление товара в корзину
+     */
+    addToBasket(){
+        console.log('Add item for basket');
+    }
+
+    /**
+     * Удаляем товар из корзины
+     */
+    removeItemBasket(){
+        console.log('Remove item from basket')
+    }
+
+    /**
+     * увеличение количество существующего товара в корзине
+     */
+    incrementItemBasket(){
+        console.log('Увеличение количество существующего товара в корзине');
+    }
+
+    /**
+     * Уменьшение и удаление количества существующего товара в корзине
+     */
+    decrimentItemBasket(){
+        console.log('Уменьшение и удаление количества существующего товара в корзине')
+    }
+
+    /**
+     * Вывод товара в DOM
+     */
+    render(){}
+}
+
+class ElemBasket {
+    constructor(id, product, price, count) {
+        this.id = id;
+        this.product = product;
+        this.price = price;
+        this.count = count; 
+    }
+
+    /**
+     * метод возвращает верстку с подставленными значениями из свойств конструктора
+     */
+    render(){
+
+    }
+}
+
 let list = new ProductList();
-
-
 
 //const products = [
 //    {id: 1, title: 'Notebook', price: 2000},
